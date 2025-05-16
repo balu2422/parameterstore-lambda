@@ -6,8 +6,8 @@ resource "aws_lambda_function" "read_ssm" {
   filename         = "${path.module}/lambda.zip"
   function_name    = "readSSMParameter"
   role             = var.role_arn
-  handler          = "index.handler"
-  runtime          = "nodejs18.x"
+  handler          = "lambda_function.lambda_handler"  # Python handler
+  runtime          = "python3.10"                      # or use python3.11
 
   environment {
     variables = {
